@@ -25,7 +25,10 @@ export class PatientsService {
       errors.push('El dueño no existe');
       throw new NotFoundException(errors);
     }
-    return this.patientRepository.save({ ...createPatientDto, owner });
+    return this.patientRepository.save({
+      ...createPatientDto,
+      ownerId: owner.id,
+    });
   }
 
   async findAll(ownerId: number | null, take: number, skip: number) {
@@ -70,19 +73,6 @@ export class PatientsService {
   async update(id: number, updatePatientDto: UpdatePatientDto) {
     const patient = await this.findOne(id);
     Object.assign(patient, updatePatientDto);
-
-    if (updatePatientDto.ownerId) {
-      const owner = await this.ownerRepository.findOneBy({
-        id: updatePatientDto.ownerId,
-      });
-
-      if (!owner) {
-        const errors: string[] = [];
-        errors.push('El dueño no existe');
-        throw new NotFoundException(errors);
-      }
-      patient.owner = owner;
-    }
 
     return await this.patientRepository.save(patient);
   }

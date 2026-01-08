@@ -20,6 +20,9 @@ export class Owner {
   @Column({ type: 'varchar', length: 100, nullable: true })
   email?: string;
 
+  @Column({ type: 'varchar', length: 320, nullable: true })
+  notes?: string;
+
   @OneToMany(() => Patient, (patient) => patient.owner, { cascade: true })
   patients: Patient[];
 }

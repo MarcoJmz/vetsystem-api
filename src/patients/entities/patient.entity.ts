@@ -22,6 +22,12 @@ export class Patient {
   @Column({ type: 'varchar', length: 30, nullable: true })
   breed: string;
 
+  @Column({ type: 'varchar', length: 320, nullable: true })
+  notes?: string;
+
+  @Column({ type: 'boolean', default: false })
+  attendsSchool: boolean;
+
   @ManyToOne(() => Owner)
   owner: Owner;
 }

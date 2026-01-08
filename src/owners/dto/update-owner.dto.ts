@@ -17,4 +17,8 @@ export class UpdateOwnerDto extends PartialType(CreateOwnerDto) {
   @IsOptional()
   @IsEmail({}, { message: 'El email debe tener un formato válido' })
   email?: string;
+
+  @IsOptional()
+  @IsString({ message: 'Las notas deben ser un string' })
+  notes?: string;
 }

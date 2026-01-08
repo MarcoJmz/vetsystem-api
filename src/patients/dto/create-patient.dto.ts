@@ -7,8 +7,8 @@ import {
 } from 'class-validator';
 
 export class CreatePatientDto {
-  @IsNotEmpty({ message: 'El nombre del dueño no puede estar vacío' })
-  @IsString({ message: 'El nombre del dueño debe ser un string' })
+  @IsNotEmpty({ message: 'El nombre del paciente no puede estar vacío' })
+  @IsString({ message: 'El nombre del paciente debe ser un string' })
   name: string;
 
   @IsNotEmpty({ message: 'La especie no puede estar vacía' })
@@ -22,6 +22,13 @@ export class CreatePatientDto {
   @IsOptional()
   @IsString({ message: 'La fecha de nacimiento debe ser una fecha válida' })
   birthDate: string;
+
+  @IsOptional()
+  @IsString({ message: 'Las notas deben ser un string' })
+  notes?: string;
+
+  @IsOptional()
+  attendsSchool: boolean;
 
   @IsNotEmpty({ message: 'El ID del dueño no puede estar vacío' })
   @IsInt({ message: 'El ID del dueño debe ser un número entero' })

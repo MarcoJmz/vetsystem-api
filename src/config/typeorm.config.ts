@@ -7,7 +7,7 @@ export const typeOrmConfig = (
 ): TypeOrmModuleOptions => ({
   type: 'postgres',
   host: configService.get('DATABASE_HOST'),
-  port: configService.get('DATABASE_PORT'),
+  // port: configService.get('DATABASE_PORT'),
   username: configService.get('DATABASE_USER'),
   password: configService.get('DATABASE_PASS'),
   database: configService.get('DATABASE_NAME'),
