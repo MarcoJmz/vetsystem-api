@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
 import { PatientsModule } from './patients/patients.module';
 import { UsersModule } from './users/users.module';
+import { AppointmentsModule } from './appointments/appointments.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { UsersModule } from './users/users.module';
     OwnersModule,
     PatientsModule,
     UsersModule,
+    AppointmentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

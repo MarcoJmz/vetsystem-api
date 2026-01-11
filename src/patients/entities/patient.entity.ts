@@ -28,6 +28,8 @@ export class Patient {
   @Column({ type: 'boolean', default: false })
   attendsSchool: boolean;
 
-  @ManyToOne(() => Owner)
+  @ManyToOne(() => Owner, (owner) => owner.patients, {
+    nullable: false,
+  })
   owner: Owner;
 }

@@ -17,7 +17,7 @@ export class PatientsService {
 
   async create(createPatientDto: CreatePatientDto) {
     const owner = await this.ownerRepository.findOneBy({
-      id: createPatientDto.ownerId,
+      id: createPatientDto.owner.id,
     });
 
     if (!owner) {
@@ -25,10 +25,8 @@ export class PatientsService {
       errors.push('El dueño no existe');
       throw new NotFoundException(errors);
     }
-    return this.patientRepository.save({
-      ...createPatientDto,
-      ownerId: owner.id,
-    });
+
+    return this.patientRepository.save({ ...createPatientDto, owner });
   }
 
   async findAll(ownerId: number | null, take: number, skip: number) {

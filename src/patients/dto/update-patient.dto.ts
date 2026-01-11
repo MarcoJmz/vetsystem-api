@@ -1,6 +1,7 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreatePatientDto } from './create-patient.dto';
 import { IsNotEmpty, IsOptional, IsString, IsInt } from 'class-validator';
+import { Owner } from 'src/owners/entities/owner.entity';
 
 export class UpdatePatientDto extends PartialType(CreatePatientDto) {
   @IsNotEmpty({ message: 'El nombre del paciente no puede estar vacío' })
@@ -26,7 +27,6 @@ export class UpdatePatientDto extends PartialType(CreatePatientDto) {
   @IsOptional()
   attendsSchool: boolean;
 
-  @IsNotEmpty({ message: 'El ID del dueño no puede estar vacío' })
-  @IsInt({ message: 'El ID del dueño debe ser un número entero' })
-  ownerId: number;
+  @IsNotEmpty({ message: 'El dueño no puede estar vacío' })
+  owner: Owner;
 }
